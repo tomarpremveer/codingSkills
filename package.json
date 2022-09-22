@@ -1,0 +1,24 @@
+{
+  "name": "codingskills",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomarpremveer/codingSkills.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tomarpremveer/codingSkills/issues"
+  },
+  "homepage": "https://github.com/tomarpremveer/codingSkills#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
