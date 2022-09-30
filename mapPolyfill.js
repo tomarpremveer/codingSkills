@@ -2,7 +2,7 @@
 This is the polyfill of the very popular map function of the arrays.
 */
 
-export function createMapFn() {
+export function createMapPolyFill() {
     if (!Array.prototype.myMap) {
         Array.prototype.myMap = function something(fn) {
             var array = this;1
