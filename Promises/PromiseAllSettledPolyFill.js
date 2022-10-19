@@ -14,13 +14,13 @@ if (!Promise.myAllSettled) {
             throw new TypeError("Object is not iterable")
         }
     
-    const promiseWithResults = new Promise((resolver, failure)=>{
+    const promiseWithResults = new Promise( async (resolver, failure)=>{
       if(promises.length == 0){
         resolver(results);
       }
         for (let i = 0; i < promises.length; i++){
             if (promises[i] instanceof Promise) { /* If value passed is a promise */
-                promises[i]
+               await promises[i]
                 .then(result => {
                     results.push(result);
                 })
