@@ -1,0 +1,86 @@
+.App {
+  /* display: flex;
+  justify-content: center;
+  align-items: center;*/
+  text-align: left;
+  height: 500px;
+  width: 500px;
+  margin: 4px auto;
+  border: 1px solid #efefef;
+}
+div.todo:last-child {
+  border-bottom: none;
+}
+
+.label {
+  width: 120px;
+  display: inline-block;
+}
+.todo {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #efefef;
+  border-collapse: collapse;
+  padding: 3px;
+}
+
+.todo .text {
+  margin: 3px;
+  padding: 3px;
+}
+
+.todo .text::first-letter {
+  text-transform: capitalize;
+}
+
+.todo .actions {
+  margin: 3px;
+  padding: 3px;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+input[type="text"] {
+  font-size: medium;
+  width: 380px;
+  padding: 7px;
+  margin: 7px;
+}
+
+button {
+  padding: 7px;
+  width: 80px;
+  margin: 2px;
+}

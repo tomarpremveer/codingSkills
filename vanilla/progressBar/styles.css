@@ -1,0 +1,18 @@
+button {
+    padding : 4px;
+    width: 50px;
+    cursor: pointer;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+.title {
+  font-weight: bold;
+}
+
+input {
+    padding: 4px;
+    margin: 4px;
+}

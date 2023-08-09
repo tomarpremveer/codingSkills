@@ -1,0 +1,22 @@
+<html>
+
+<head>
+    <title>Hi there</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js"
+        integrity="sha512-YeeA/Qxn5hYdkukScTCNNOhTrv1C2RubAGButJ1rmgQwZf/HdRaCGl+JAVkqsqaNRaYNHdheiuKKuPf9mDcqKg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<script>
+    let socket = io('http://localhost:8000')
+    socket.on('connect', (data) => {
+        console.log('evnet', event);
+        socket.on('welcome', message => {
+            console.log('data', message)
+        })
+        socket.emit('message', 'Hi here you are')
+    })
+</script>
+
+<body></body>
+
+</html>

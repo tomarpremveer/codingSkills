@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Progress Bar</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <meta charset="UTF-8" />
+    <script type="module" src="./ProgressBar.js"></script>
+    <script type="module">
+        import ProgressBar from "./ProgressBar.js";
+
+        const progressBar = new ProgressBar("progressBar");
+
+        window.addEventListener('load', function () {
+
+            /* handler for button click */
+            var queueButton = document.querySelector('#queue-button');
+            queueButton.addEventListener('click', function (event) {
+                event.preventDefault();
+                var secondsInput = document.querySelector('#seconds').value;
+                progressBar.queueNumber(secondsInput);
+            })
+
+
+
+        })
+    </script>
+</head>
+
+<body>
+    <div>
+        Requirement : Create a progress bar that takes n seconds to complete. Make
+        the progress bar queueable, i.e., on button click, the progress bar should
+        restart after the current one is complete.
+    </div>
+    <br />
+    <hr />
+    <div class="title">Progress Bar</div>
+    <input id="seconds" type="number" min="1" step="1" />
+    <button id="queue-button">Queue</button>
+
+    <div>
+        <progress id="progressBar" value="0" max="100" />
+    </div>
+
+    <!-- <script src="./index.js"></script> -->
+</body>
+
+</html>

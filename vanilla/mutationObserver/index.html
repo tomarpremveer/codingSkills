@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+    <script type="module" src="./mutationObserver.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+    <button id="addItemButton">Add Item</button>
+
+    <script src="./index.js"></script>
+    <script type="module">
+        import MutationObserverHere from './mutationObserver.js';
+        window.addEventListener('load', onLoad)
+        window.addEventListener('beforeunload', beforeUnload);
+        const addItemButton = document.querySelector('#addItemButton');
+        addItemButton.addEventListener('click', handleAddItemClick);
+        var observer = null;
+        function callback(mutationList, observer) {
+            for (const mutation of mutationList) {
+                if (mutation.type === 'childList') {
+                    console.log('A child node has been added or removed.');
+                } else if (mutation.type === 'attributes') {
+                    console.log(`The ${mutation.attributeName} attribute was modified.`);
+                }
+            }
+        };
+        function onLoad() {
+            console.log('this was called')
+            observer = new MutationObserverHere();
+            observer.init(callback);
+            const target = document.querySelector('#app');
+            observer.observe(target);
+        }
+        function beforeUnload() {
+            console.log('before unload was called')
+            observer.removeObserver();
+        }
+        function handleAddItemClick() {
+            const parentDiv = document.querySelector('#app');
+            const item = document.createElement('div')
+            item.innerText = "item is";
+            parentDiv.appendChild(item);
+        }
+    </script>
+</body>
+
+</html>

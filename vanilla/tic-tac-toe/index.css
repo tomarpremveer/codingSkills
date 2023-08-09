@@ -1,0 +1,17 @@
+.container {
+    margin-top: 50px;
+  width: 500px;
+  height: 500px;
+  margin: 0 auto;
+}
+
+.area{
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+  border: 1px solid green; 
+  cursor: pointer;
+}
+.row{
+  display: flex;
+}
