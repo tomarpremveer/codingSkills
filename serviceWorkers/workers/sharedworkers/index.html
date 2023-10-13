@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        const worker = new SharedWorker('./sharedworker.js');
+        console.log('worker', worker);
+        function consoleHere(){
+            worker.port.postMessage("hi i am the worker");
+            worker.port.onmessage = function (event) {
+                console.log(event.data);
+            };
+        }
+       
+    </script>
+</head>
+
+<body>
+    <p>this is the index html file of shared worker</p>
+    <button onclick="consoleHere()">Click Me</button>
+    <div id="post-container"></div>
+</body>
+
+</html>

@@ -28,4 +28,34 @@ const sum = (a,b) => a + b
 const curriedSum = curry(sum)
 const AddFiveToSum = curriedSum(5)
 const AddSixToSum = AddFiveToSum(6);
-console.log("and the sum is",AddSixToSum)
+console.log("and the sum is", AddSixToSum)
+
+function curryWithPlaceholder(fn) {
+  return function curriedFn(...args) {
+    /*Slicing the number of arguments required by the actual function to execute */
+    const requiredArgs = args.slice(0, fn.length);
+    /* checking if sliced args has placeholders */
+    let hasPlaceholder = requiredArgs.some((arg) => arg == curryWithPlaceholder.placeholder);
+    if (!hasPlaceholder && fn.length == requiredArgs.length) {
+      fn.apply(this, requiredArgs);
+    } else {
+      return function (...args1) {
+          return curriedFn.apply(this, mergeArgs(requiredArgs, args1))
+      }
+    }
+  }
+}
+curryWithPlaceholder.placeholder = '_'
+
+function mergeArgs(args, otherArgs) {
+  let result = [];
+  /*go through every arg and replace that arg with an arg from the nextargs if arg is a placeholder */
+  args.forEach(arg => {
+    if (arg == curryWithPlaceholder.placeholder) {
+      result.push(otherArgs.shift());
+    } else {
+      result.push(arg)
+    }
+  })
+  return [...result, ...otherArgs]
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        const worker = new Worker('./worker.js');
+        console.log(worker);
+        worker.postMessage("hi i am the worker");
+        worker.onmessage = function (event) {
+            console.log(event.data);
+        };
+
+        function fetchData(){
+            worker.postMessage({type: 'fetchJsonData'})
+            worker.onmessage = function (event) {
+                const {data} = event;
+
+                const {type, posts} = data;
+                if(type == 'fetchJsonData'){
+                    const postsContainer = document.querySelector('#post-container');
+                    const documentFragment = document.createDocumentFragment();
+                    posts.forEach(post => {
+                        const pTag = document.createElement('p');
+                        pTag.textContent = post.title;
+                        documentFragment.appendChild(pTag);
+                    })
+
+                    postsContainer.appendChild(documentFragment);
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <p>this is the index html file of worker</p>
+    <button onclick="fetchData()">Fetch Data</button>
+    <div id="post-container"></div>
+</body>
+
+</html>

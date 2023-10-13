@@ -1,6 +1,6 @@
 /*
-
-
+__proto__ containes the reference to the prototype i.e constructor of the parent object
+while prototype property is the contstuctor of the function, found only on functions(instances can be created)
 */
 
 const instanceOf = function (obj, target) {

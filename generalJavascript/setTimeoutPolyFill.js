@@ -9,7 +9,7 @@ function createSettimeout() {
 
     function executeCallback() {
       if (!timerMap[id]) return;
-      if (start + delay < Date.now()) {
+      if (start + delay > Date.now()) {
         callback();
       } else {
         requestIdleCallback(executeCallback);
